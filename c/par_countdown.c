@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <pthread.h>
 
 #define EXIT_CODE 1
 
@@ -70,24 +71,45 @@ int permutation(int target_len, int pos, bool* used, char* letters, char* curr_r
     return -1;
 }
 
-void allPermutations(char *letters) {
+void *pthreadPerm(void* arg) {
+    char letters[] = {'o', 'p', 'n', 'e', 't', 'q', 'a', 'd', 's'};
+    
     char curr_result[10];
     bool used[10];
 
     for (int i = 0; i < 9; i++) {
         used[i] = false;
     }
-    
-    for (int i = 9; i > 0; i--) {
-        printf("Checking %d letter words!\n", i);
-        if (permutation(i, 0, used, letters, curr_result) == 0) return;
-    }
 
-    return;
+    permutation((int)(long)arg, 0, used, letters, curr_result);
+    return NULL;
+}
+
+void allPermutations(void) {
+    pthread_t perm1, perm2, perm3, perm4, perm5, perm6, perm7, perm8, perm9;
+
+    pthread_create(&perm9, NULL, pthreadPerm, (void*)9);
+    pthread_create(&perm8, NULL, pthreadPerm, (void*)8);
+    pthread_create(&perm7, NULL, pthreadPerm, (void*)7);
+    pthread_create(&perm6, NULL, pthreadPerm, (void*)6);
+    pthread_create(&perm5, NULL, pthreadPerm, (void*)5);
+    pthread_create(&perm4, NULL, pthreadPerm, (void*)4);
+    pthread_create(&perm3, NULL, pthreadPerm, (void*)3);
+    pthread_create(&perm2, NULL, pthreadPerm, (void*)2);
+    pthread_create(&perm1, NULL, pthreadPerm, (void*)1);
+
+    pthread_join(perm9, NULL);
+    pthread_join(perm8, NULL);
+    pthread_join(perm7, NULL);
+    pthread_join(perm6, NULL);
+    pthread_join(perm5, NULL);
+    pthread_join(perm4, NULL);
+    pthread_join(perm3, NULL);
+    pthread_join(perm2, NULL);
+    pthread_join(perm1, NULL);
 }
 
 int main(void) {
-    char letters[] = {'o', 'p', 'n', 'e', 't', 'q', 'a', 'd', 's'};
-    allPermutations(letters);
+    allPermutations();
     return 0;
 }
