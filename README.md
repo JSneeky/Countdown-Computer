@@ -2,7 +2,7 @@
 A program that gives the best solutions to the UK Daytime TV show Countdown.
 
 # C Implementation
-par_countdown.c is a parallelised version of countdown.c and will reliably find up to 7 letter words within the 30 seconf time frame.
+par_countdown.c is a parallelised version of countdown.c and will reliably find up to 7 letter words within the 30 second time frame.
 8 and 9 letter words will only be found in some circumstances in time. 
 
 countdown.c will output the longest word found.
