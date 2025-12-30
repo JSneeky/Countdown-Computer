@@ -86,8 +86,23 @@ void allPermutations(char *letters) {
     return;
 }
 
-int main(void) {
-    char letters[] = {'o', 'p', 'n', 'e', 't', 'q', 'a', 'd', 's'};
-    allPermutations(letters);
-    return 0;
+void getLetters(char **args, char* letters) {
+    for (int i = 0; i < 9; i++) {
+        letters[i] = args[i+1][0];
+    }
+}
+
+int main(int n, char **args) {
+    if (n != 11) {
+        error();
+    }
+    else if (args[1][1] = 'l') {
+        char letters[10];
+        getLetters(args, letters);
+        allPermutations(letters);
+    }    
+    else if (args[1][1] = 'n') {
+
+    }
+    else error();
 }

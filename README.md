@@ -8,6 +8,10 @@ par_countdown.c is a parallelised version of countdown.c and will reliably find 
 countdown.c will output the longest word found.
 par_countdown.c will output a word for each length if possible.
 
+Each file has two different modes:
+- If called with the -l flag, e.g. ./countdown -l ..., the program will try to complete the letters game with the given letters.
+- If called with the -n flag, e.g. ./countdown -n ..., the program will try to complete the numbers game with the given numbers.
+
 # Currently In Devlopment
 - A C program that computes the above for the letters and numbers game
 - A Next.js based application that computes the above and provides solutions in a GUI.
